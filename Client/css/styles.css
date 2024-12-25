@@ -379,6 +379,9 @@ th {
 
 label {
   display: inline-block;
+  color: white;
+  margin-top: 1rem;
+  font-size: 1rem;
 }
 
 button {
@@ -454,10 +457,10 @@ fieldset {
 legend {
   float: left;
   width: 100%;
-  padding: 0;
-  margin-bottom: 0.5rem;
-  font-size: calc(1.275rem + 0.3vw);
+  margin-top: 1rem;
+  font-size: 1rem;
   line-height: inherit;
+  color: white;
 }
 
 #icons {
@@ -466,6 +469,10 @@ legend {
 
 @media (min-width: 1200px) {
   legend {
+    font-size: 1.5rem;
+  }
+
+  label {
     font-size: 1.5rem;
   }
 }
@@ -662,6 +669,9 @@ progress {
 
 #bottom-banner {
   opacity: 0.5;
+  margin-top: 10rem;
+  margin-bottom: 0;
+
 }
 
 .img-thumbnail {
@@ -2599,6 +2609,11 @@ textarea.form-control-lg {
 
 .form-check-input[type=radio] {
   border-radius: 50%;
+  margin-top: 1.225rem;
+}
+
+.form-check-label {
+  margin-right: 1rem;
 }
 
 .form-check-input:active {
@@ -12946,7 +12961,7 @@ body {
 }
 
 .about-section {
-  padding-top: 10rem;
+  padding-top: 1rem;
   background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
 }
 
