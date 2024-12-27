@@ -2609,7 +2609,14 @@ textarea.form-control-lg {
 
 .form-check-input[type=radio] {
   border-radius: 50%;
-  margin-top: 1.225rem;
+  margin-top: 1.2rem;
+}
+
+@media (min-width: 1200px) {
+  .form-check-input[type=radio] {
+    border-radius: 50%;
+    margin-top: 1.6rem;
+  }
 }
 
 .form-check-label {
