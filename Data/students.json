@@ -1,0 +1,322 @@
+[
+    {
+        "name": "James Potter",
+        "gender": "Male",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Lily Evans",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Sirius Black",
+        "gender": "Male",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Remus Lupin",
+        "gender": "Male",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Peter Pettigrew",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Marlene McKinnon",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Caradoc Dearborn",
+        "gender": "Male",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Dorcas Meadowes",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Michael Corner",
+        "gender": "Male",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Mary Macdonald",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Gryffindor"
+    },
+    {
+        "name": "Regulus Black",
+        "gender": "Male",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Severus Snape",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Vincent Crabbe Sr.",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Mulciber",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Evan Rosier",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Wilkes",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Bellatrix Lestrange (née Black)",
+        "gender": "Female",
+        "favSweet": "Acid Pop",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Rodolphus Lestrange",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Rabastan Lestrange",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Tom Riddle",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Dark Magic",
+        "stash": "robe",
+        "house": "Slytherin"
+    },
+    {
+        "name": "Eleanor Astridge",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Cedric Wimplebottom",
+        "gender": "Male",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Rowena Ravenwood",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Barnaby Blenheim",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Camilla Campanula",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Silas Sparkspanner",
+        "gender": "Male",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Astrid Argent",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Caspian Nightshade",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Lysandra Larkspur",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Thaddeus Thistlethorpe",
+        "gender": "Male",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Ravenclaw"
+    },
+    {
+        "name": "Cedrella Weasley",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Hestia Jones",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Daphne Greengrass",
+        "gender": "Female",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Susan Bones",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Hannah Abbott",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Herbert Parkinson",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Duelling Magic",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Nymphadora Tonks",
+        "gender": "Female",
+        "favSweet": "Fizzing Whizbees",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Bridget Bridgewater",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Bertram Burbage",
+        "gender": "Male",
+        "favSweet": "Acid Pop",
+        "specialisation": "Trailblazing Potions",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    },
+    {
+        "name": "Hortensia Higglebottom",
+        "gender": "Female",
+        "favSweet": "Chocolate Frogs",
+        "specialisation": "Protective Magic",
+        "stash": "robe",
+        "house": "Hufflepuff"
+    }
+]
