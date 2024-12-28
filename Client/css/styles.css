@@ -207,7 +207,6 @@ h6,
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
   color: white;
 }
 
@@ -2575,7 +2574,7 @@ textarea.form-control-lg {
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5em;
-  margin-bottom: 0.125rem;
+  margin-bottom: 2.125rem;
 }
 
 .form-check .form-check-input {
@@ -2619,12 +2618,14 @@ textarea.form-control-lg {
 .form-check-input[type=radio] {
   border-radius: 50%;
   margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 @media (min-width: 1200px) {
   .form-check-input[type=radio] {
     border-radius: 50%;
     margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
   }
 }
 
