@@ -14,10 +14,11 @@ nameInput.addEventListener("submit", async function (event) {
         });
     let responseData = await response.json();
     if (responseData.exists) {
-        console.log(regInstead.style.display);
         regInstead.style.display = "none";
         document.getElementById('loginStudent').style.display = "none";
         document.getElementById('login').style.display = "none";
+        document.getElementById('successfulLogin').style.display = "block";
+        document.getElementById('loggedInStudent').innerHTML = responseData;
     } else {
         regInstead.style.display = "block";
     }

@@ -113,6 +113,11 @@ body {
   display: none;
 }
 
+#successfulLogin {
+  display: none;
+}
+
+
 #studentNotFound {
   display: none;
 }
