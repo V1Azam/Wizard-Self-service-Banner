@@ -109,7 +109,13 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-#registerNewStudent {}
+#registerNewStudent {
+  display: none;
+}
+
+#studentNotFound {
+  display: none;
+}
 
 hr {
   margin: 1rem 0;
@@ -202,6 +208,7 @@ h6,
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  color: white;
 }
 
 abbr[title] {
