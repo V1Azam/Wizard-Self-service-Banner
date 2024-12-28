@@ -13,16 +13,17 @@ app.get('/randomHouse', function (req, resp) {
 })
 
 app.post('/checkExistingStudent', function (req, resp) {
-    let studentExists = false;
+    let result = { name: false };
     for (let i = 0; i < students.length; ++i) {
         let currentName = students[i];
         if (currentName.name == req.body.name) {
-            studentExists = true;
+            result = currentName;
             break;
         }
     }
-    resp.json({ exists: studentExists });
-})
+    resp.json(result);
+});
+
 
 app.use(express.static('Client'));
 

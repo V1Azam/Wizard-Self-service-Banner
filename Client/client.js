@@ -13,12 +13,12 @@ nameInput.addEventListener("submit", async function (event) {
             body: nameInputJSON
         });
     let responseData = await response.json();
-    if (responseData.exists) {
+    if (responseData.name) {
         regInstead.style.display = "none";
         document.getElementById('loginStudent').style.display = "none";
         document.getElementById('login').style.display = "none";
         document.getElementById('successfulLogin').style.display = "block";
-        document.getElementById('loggedInStudent').innerHTML = responseData;
+        document.getElementById('loggedInStudent').innerHTML = responseData.name;
     } else {
         regInstead.style.display = "block";
     }
