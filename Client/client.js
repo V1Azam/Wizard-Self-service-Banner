@@ -14,6 +14,24 @@ function setUpStudentPage(obj) {
     document.getElementById('bio').innerHTML = ("You like " + obj.favSweet + "!");
 }
 
+function tab(event, tabName) {
+    let tabcontent;
+    let tablink;
+
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tablink = document.getElementsByClassName("tablink");
+    for (let i = 0; i < tablink.length; i++) {
+        tablink[i].className = tablink[i].className.replace(" active", "");
+    }
+
+    document.getElementById(tabName).style.display = "block";
+    event.currentTarget.className += " active";
+}
+
 nameInput.addEventListener("submit", async function (event) {
     event.preventDefault();
     let nameInputData = new FormData(nameInput)
@@ -40,3 +58,8 @@ document.getElementById("registerLink").onclick = function (event) {
     document.getElementById('login').style.display = "none"
     regInstead.style.display = "none";
 }
+
+// Set default tab to London on page load
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".tablink").click();
+});

@@ -119,6 +119,29 @@
                     <img id="genderPic" src="" alt="..." />
                     <h3 class="text-white mb-4" id="loggedInStudent"></h3>
                     <p class="mb-0 text-white-50" id="bio"></p>
+                    <div id="wizardScroll">
+                        <div class="tab">
+                            <button class="tablink" onclick="tab(event, 'London')">London</button>
+                            <button class="tablink" onclick="tab(event, 'Paris')">Paris</button>
+                            <button class="tablink" onclick="tab(event, 'Tokyo')">Tokyo</button>
+                        </div>
+
+                        <!-- Tab content -->
+                        <div id="London" class="tabcontent">
+                            <h3>London</h3>
+                            <p>London is the capital city of England.</p>
+                        </div>
+
+                        <div id="Paris" class="tabcontent">
+                            <h3>Paris</h3>
+                            <p>Paris is the capital of France.</p>
+                        </div>
+
+                        <div id="Tokyo" class="tabcontent">
+                            <h3>Tokyo</h3>
+                            <p>Tokyo is the capital of Japan.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <img class="img-fluid" id="bottom-banner" src="assets/img/ipad.png" alt="..." />
