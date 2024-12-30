@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">Login/Register</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Wizard's Scroll</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Legacy</a></li>
                     <li class="nav-item"><a class="nav-link" href="#signup">More Info</a></li>
                 </ul>
             </div>
@@ -113,7 +113,7 @@
                     </form>
                 </div>
             </div>
-            <div class="row gx-4 gx-lg-5 justify-content-center" id="successfulLogin">
+            <div class="row gx-4 gx-lg-5  justify-content-center" id="successfulLogin">
                 <div class="col-lg-15">
                     <h2 class="text-white mb-4">Welcome</h2>
                     <img id="genderPic" src="" alt="..." />
@@ -121,25 +121,28 @@
                     <p class="mb-0 text-white-50" id="bio"></p>
                     <div id="wizardScroll">
                         <div class="tab">
-                            <button class="tablink" onclick="tab(event, 'London')">London</button>
-                            <button class="tablink" onclick="tab(event, 'Paris')">Paris</button>
-                            <button class="tablink" onclick="tab(event, 'Tokyo')">Tokyo</button>
+                            <button class="tablink" onclick="tab(event, 'mastery')">Mastery</button>
+                            <button class="tablink" onclick="tab(event, 'house')">House</button>
+                            <button class="tablink" onclick="tab(event, 'map')">What's Next</button>
                         </div>
 
                         <!-- Tab content -->
-                        <div id="London" class="tabcontent">
-                            <h3>London</h3>
-                            <p>London is the capital city of England.</p>
+                        <div id="mastery" class="tabcontent">
+                            <h3 id="scrollTitleMastery"></h3>
+                            <div class="studentScrollBox col-lg-3">
+                            </div>
                         </div>
 
-                        <div id="Paris" class="tabcontent">
-                            <h3>Paris</h3>
-                            <p>Paris is the capital of France.</p>
+                        <div id="house" class="tabcontent">
+                            <h3 id="scrollTitleHouse"></h3>
+                            <div class="studentScrollBox col-lg-3">
+                            </div>
                         </div>
 
-                        <div id="Tokyo" class="tabcontent">
-                            <h3>Tokyo</h3>
-                            <p>Tokyo is the capital of Japan.</p>
+                        <div id="map" class="tabcontent">
+                            <h3>Where to next?</h3>
+                            <p>Follow the map to the Transfiguration corridor for your matriculation picture</p>
+                            <img class="col-lg-10" src="./assets/img/Map_scroll.gif" />
                         </div>
                     </div>
                 </div>
@@ -148,16 +151,17 @@
         </div>
     </section>
     <!-- Projects-->
-    <section class="projects-section bg-light" id="projects">
+    <section class="projects-section bg-light">
         <div class="container px-4 px-lg-5">
             <!-- Featured Project Row-->
             <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg"
-                        alt="..." /></div>
+                <div class="col-xl-8 col-lg-7" id="projects"><img class="img-fluid mb-3 mb-lg-0"
+                        src="assets/img/bg-masthead.jpg" alt="..." /></div>
                 <div class="col-xl-4 col-lg-5">
                     <div class="featured-text text-center text-lg-left">
                         <h4>Campus</h4>
-                        <p class="text-black-50 mb-0">Hogwarts School of Witchcraft and Wizardry invites you to
+                        <p class="text-black-50 mb-0">Hogwarts School of Witchcraft and Wizardry invites
+                            you to
                             join our vibrant community of young witches and wizards. Our historic campus offers
                             state-of-the-art facilities, including the Great Hall, Quidditch pitches, and cutting-edge
                             classrooms.
