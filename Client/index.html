@@ -49,14 +49,14 @@
     <!-- About-->
     <section class="about-section text-center" id="about">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="row gx-4 gx-lg-5 justify-content-center" id="loginStudent">
                 <div class="col-lg-8">
-                    <h2 class="text-white mb-4" id="loginStudent">Login/Register here</h2>
+                    <h2 class="text-white mb-4">Login/Register here</h2>
                     <form id="login" method="post">
                         <div class="form-group">
                             <label for="studentName">Full Name</label>
-                            <input type="text" class="form-control" id="studentName" placeholder="Enter Your Name Here"
-                                name="name" required>
+                            <input type="text" class="form-control" placeholder="Enter Your Name Here" name="name"
+                                required>
                         </div>
                         <div class="form-group">
                             <input class="btn btn-primary" type="submit" value="Login" />
@@ -114,9 +114,11 @@
                 </div>
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center" id="successfulLogin">
-                <div class="col-lg-8">
+                <div class="col-lg-15">
                     <h2 class="text-white mb-4">Welcome</h2>
+                    <img id="genderPic" src="" alt="..." />
                     <h3 class="text-white mb-4" id="loggedInStudent"></h3>
+                    <p class="mb-0 text-white-50" id="bio"></p>
                 </div>
             </div>
             <img class="img-fluid" id="bottom-banner" src="assets/img/ipad.png" alt="..." />
