@@ -177,7 +177,8 @@ body {
 }
 
 .commonStudentBoxes {
-  background-color: #BC8E48;
+  background-color: #5e3c77;
+  outline: 10px solid #BC8E48;
   width: 10rem;
   padding-top: 1rem;
   margin: 3rem;
@@ -187,6 +188,23 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.commonStudentBoxes .commonStudentBoxesSweet {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  font: inherit;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.commonStudentBoxes:hover .commonStudentBoxesSweet {
+  visibility: visible;
 }
 
 .commonStudentGender {

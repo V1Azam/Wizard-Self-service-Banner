@@ -23,25 +23,32 @@ async function setUpStudentPage(obj) {
     let checkCommonMastery = JSON.stringify({ name: obj.name, specialisation: obj.specialisation });
     let fullListM = await getStudentDetails(checkCommonMastery);
     for (let i = 0; i < Object.keys(fullListM).length; ++i) {
-        commonStudentbox("masteryBox", fullListM[i].name, fullListM[i].name)
+        commonStudentbox("masteryBox", obj.favSweet, fullListM[i].favSweet, fullListM[i].name, fullListM[i].gender)
     }
 
 
     document.getElementById('scrollTitleHouse').innerHTML = (obj.house + " students of 2025");
     let checkCommonHouse = JSON.stringify({ name: obj.name, house: obj.house });
-    console.log(checkCommonHouse);
     let fullListH = await getStudentDetails(checkCommonHouse);
-    console.log(fullListH);
     for (let i = 0; i < Object.keys(fullListH).length; ++i) {
-        commonStudentbox("houseBox", fullListH[i].name, fullListH[i].name)
+        commonStudentbox("houseBox", obj.favSweet, fullListH[i].favSweet, fullListH[i].name, fullListH[i].gender)
     }
 }
 
 //create a div for each common student
-function commonStudentbox(box, name, gender) {
+function commonStudentbox(box, currentSweet, commonSweet, name, gender) {
     let commonStudent = document.createElement('div');
     commonStudent.classList.add("commonStudentBoxes");
-    let text = document.createElement('p');
+
+    let commonStudentSweet = document.createElement('span');
+    commonStudentSweet.classList.add("commonStudentBoxesSweet");
+    if (currentSweet == commonSweet) {
+        commonStudentSweet.innerText = "You both love " + commonSweet + "!";
+    } else {
+        commonStudentSweet.innerText = "Loves " + commonSweet + "!";
+    }
+    commonStudent.appendChild(commonStudentSweet);
+
     let img = document.createElement('img');
     if (gender == "Male") {
         img.src = "./assets/img/male.png";
@@ -50,10 +57,12 @@ function commonStudentbox(box, name, gender) {
     }
     img.classList.add("commonStudentGender")
     commonStudent.appendChild(img);
+
+    let text = document.createElement('p');
     text.innerText = name;
     text.classList.add("commonStudentName");
     text.classList.add("mb-0");
-    text.classList.add("text-black");
+    text.classList.add("text-white");
     commonStudent.appendChild(text);
 
     document.getElementById(box).appendChild(commonStudent);
@@ -84,7 +93,6 @@ async function getStudentDetails(InputJSON) {
     if (Object.keys(parsedData).length == 1) {
         command = '/checkExistingStudent';
     } else {
-        console.log("reached");
         command = '/callStudent';
     }
     let response = await fetch(command,

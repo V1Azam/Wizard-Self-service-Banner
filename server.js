@@ -28,8 +28,6 @@ app.post('/callStudent', function (req, resp) {
     let group = [];
     let attribute = req.body[Object.keys(req.body)[1]];
     let key = Object.keys(req.body)[1];
-    console.log(attribute);
-    console.log(key);
     for (let i = 0; i < students.length; ++i) {
         let currentStudent = students[i];
         if (currentStudent[key] == attribute) {
