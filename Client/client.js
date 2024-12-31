@@ -19,53 +19,57 @@ async function setUpStudentPage(obj) {
     }
     document.getElementById('bio').innerHTML = ("You like " + obj.favSweet + "!");
 
-    document.getElementById('scrollTitleMastery').innerHTML = (obj.specialisation + " students of 2025");
+    document.getElementById('scrollTitleMastery').innerHTML = ("Meet your " + obj.specialisation + " classmates of 2025");
     let checkCommonMastery = JSON.stringify({ name: obj.name, specialisation: obj.specialisation });
     let fullListM = await getStudentDetails(checkCommonMastery);
     for (let i = 0; i < Object.keys(fullListM).length; ++i) {
-        commonStudentbox("masteryBox", obj.favSweet, fullListM[i].favSweet, fullListM[i].name, fullListM[i].gender)
+        commonStudentbox("masteryBox", obj.favSweet, fullListM[i].favSweet, fullListM[i].name, fullListM[i].gender, obj.name)
     }
 
 
-    document.getElementById('scrollTitleHouse').innerHTML = (obj.house + " students of 2025");
+    document.getElementById('scrollTitleHouse').innerHTML = ("Meet your " + obj.house + " family of 2025");
     let checkCommonHouse = JSON.stringify({ name: obj.name, house: obj.house });
     let fullListH = await getStudentDetails(checkCommonHouse);
     for (let i = 0; i < Object.keys(fullListH).length; ++i) {
-        commonStudentbox("houseBox", obj.favSweet, fullListH[i].favSweet, fullListH[i].name, fullListH[i].gender)
+        commonStudentbox("houseBox", obj.favSweet, fullListH[i].favSweet, fullListH[i].name, fullListH[i].gender, obj.name)
     }
 }
 
 //create a div for each common student
-function commonStudentbox(box, currentSweet, commonSweet, name, gender) {
-    let commonStudent = document.createElement('div');
-    commonStudent.classList.add("commonStudentBoxes");
-
-    let commonStudentSweet = document.createElement('span');
-    commonStudentSweet.classList.add("commonStudentBoxesSweet");
-    if (currentSweet == commonSweet) {
-        commonStudentSweet.innerText = "You both love " + commonSweet + "!";
+function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentName) {
+    if (currentName == name) {
+        return;
     } else {
-        commonStudentSweet.innerText = "Loves " + commonSweet + "!";
+        let commonStudent = document.createElement('div');
+        commonStudent.classList.add("commonStudentBoxes");
+
+        let commonStudentSweet = document.createElement('span');
+        commonStudentSweet.classList.add("commonStudentBoxesSweet");
+        if (currentSweet == commonSweet) {
+            commonStudentSweet.innerText = "You both love " + commonSweet + "!";
+        } else {
+            commonStudentSweet.innerText = "Loves " + commonSweet + "!";
+        }
+        commonStudent.appendChild(commonStudentSweet);
+
+        let img = document.createElement('img');
+        if (gender == "Male") {
+            img.src = "./assets/img/male.png";
+        } else {
+            img.src = "./assets/img/female.png";
+        }
+        img.classList.add("commonStudentGender")
+        commonStudent.appendChild(img);
+
+        let text = document.createElement('p');
+        text.innerText = name;
+        text.classList.add("commonStudentName");
+        text.classList.add("mb-0");
+        text.classList.add("text-white");
+        commonStudent.appendChild(text);
+
+        document.getElementById(box).appendChild(commonStudent);
     }
-    commonStudent.appendChild(commonStudentSweet);
-
-    let img = document.createElement('img');
-    if (gender == "Male") {
-        img.src = "./assets/img/male.png";
-    } else {
-        img.src = "./assets/img/female.png";
-    }
-    img.classList.add("commonStudentGender")
-    commonStudent.appendChild(img);
-
-    let text = document.createElement('p');
-    text.innerText = name;
-    text.classList.add("commonStudentName");
-    text.classList.add("mb-0");
-    text.classList.add("text-white");
-    commonStudent.appendChild(text);
-
-    document.getElementById(box).appendChild(commonStudent);
 }
 
 function tab(event, tabName) {
@@ -128,7 +132,16 @@ document.getElementById("registerLink").onclick = function (event) {
     visual('registerNewStudent', "block");
     visual('login', "none");
     visual('studentNotFound', "none");
-}
+};
+
+document.getElementById("loginLink").onclick = function (event) {
+    event.preventDefault();
+    document.getElementById("login").reset();
+    visual('loginStudent', "block");
+    visual('successfulLogin', "none");
+    document.getElementById("masteryBox").innerHTML = "";
+    document.getElementById("houseBox").innerHTML = "";
+};
 
 // Set default tab to first tab on page load
 document.addEventListener("DOMContentLoaded", function () {
