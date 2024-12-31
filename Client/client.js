@@ -20,19 +20,11 @@ async function setUpStudentPage(obj) {
     document.getElementById('bio').innerHTML = ("You like " + obj.favSweet + "!");
 
     document.getElementById('scrollTitleMastery').innerHTML = ("Meet your " + obj.specialisation + " classmates of 2025");
-    let checkCommonMastery = JSON.stringify({ name: obj.name, specialisation: obj.specialisation });
-    let fullListM = await getStudentDetails(checkCommonMastery);
-    for (let i = 0; i < Object.keys(fullListM).length; ++i) {
-        commonStudentbox("masteryBox", obj.favSweet, fullListM[i].favSweet, fullListM[i].name, fullListM[i].gender, obj.name)
-    }
+    listOfCommonStudents("specialisation", "masteryBox", obj);
 
 
     document.getElementById('scrollTitleHouse').innerHTML = ("Meet your " + obj.house + " family of 2025");
-    let checkCommonHouse = JSON.stringify({ name: obj.name, house: obj.house });
-    let fullListH = await getStudentDetails(checkCommonHouse);
-    for (let i = 0; i < Object.keys(fullListH).length; ++i) {
-        commonStudentbox("houseBox", obj.favSweet, fullListH[i].favSweet, fullListH[i].name, fullListH[i].gender, obj.name)
-    }
+    listOfCommonStudents("house", "houseBox", obj);
 }
 
 //create a div for each common student
@@ -90,6 +82,14 @@ function tab(event, tabName) {
     event.currentTarget.className += " active";
 }
 
+async function listOfCommonStudents(attribute, whichBox, obj) {
+    let checkCommonAttribute = JSON.stringify({ name: obj.name, [attribute]: obj[attribute] });
+    let fullList = await getStudentDetails(checkCommonAttribute);
+    for (let i = 0; i < Object.keys(fullList).length; ++i) {
+        commonStudentbox(whichBox, obj.favSweet, fullList[i].favSweet, fullList[i].name, fullList[i].gender, obj.name)
+    }
+}
+
 //name goes in, returns a student is found returns and .name = false if not
 async function getStudentDetails(InputJSON) {
     let parsedData = JSON.parse(InputJSON);
@@ -141,6 +141,7 @@ document.getElementById("loginLink").onclick = function (event) {
     visual('successfulLogin', "none");
     document.getElementById("masteryBox").innerHTML = "";
     document.getElementById("houseBox").innerHTML = "";
+    document.querySelector(".tablink").click();
 };
 
 // Set default tab to first tab on page load
