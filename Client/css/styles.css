@@ -171,6 +171,9 @@ body {
   width: 100%;
   height: 325px;
   overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .commonStudentBoxes {
@@ -182,13 +185,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  /* Align items vertically */
   align-items: center;
-  /* Center items horizontally */
   justify-content: center;
-  /* Center content vertically */
-  overflow: hidden;
-
 }
 
 .commonStudentGender {
@@ -199,6 +197,8 @@ body {
 .commonStudentName {
   text-align: center;
   margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #wizardScroll,

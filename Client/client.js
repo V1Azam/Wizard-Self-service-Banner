@@ -6,7 +6,7 @@ function visual(elem, act) {
 }
 
 //setup of student page
-function setUpStudentPage(obj) {
+async function setUpStudentPage(obj) {
     visual('studentNotFound', "none");
     visual('loginStudent', "none");
     visual('successfulLogin', "block");
@@ -20,10 +20,43 @@ function setUpStudentPage(obj) {
     document.getElementById('bio').innerHTML = ("You like " + obj.favSweet + "!");
 
     document.getElementById('scrollTitleMastery').innerHTML = (obj.specialisation + " students of 2025");
-
+    let checkCommonMastery = JSON.stringify({ name: obj.name, specialisation: obj.specialisation });
+    let fullListM = await getStudentDetails(checkCommonMastery);
+    for (let i = 0; i < Object.keys(fullListM).length; ++i) {
+        commonStudentbox("masteryBox", fullListM[i].name, fullListM[i].name)
+    }
 
 
     document.getElementById('scrollTitleHouse').innerHTML = (obj.house + " students of 2025");
+    let checkCommonHouse = JSON.stringify({ name: obj.name, house: obj.house });
+    console.log(checkCommonHouse);
+    let fullListH = await getStudentDetails(checkCommonHouse);
+    console.log(fullListH);
+    for (let i = 0; i < Object.keys(fullListH).length; ++i) {
+        commonStudentbox("houseBox", fullListH[i].name, fullListH[i].name)
+    }
+}
+
+//create a div for each common student
+function commonStudentbox(box, name, gender) {
+    let commonStudent = document.createElement('div');
+    commonStudent.classList.add("commonStudentBoxes");
+    let text = document.createElement('p');
+    let img = document.createElement('img');
+    if (gender == "Male") {
+        img.src = "./assets/img/male.png";
+    } else {
+        img.src = "./assets/img/female.png";
+    }
+    img.classList.add("commonStudentGender")
+    commonStudent.appendChild(img);
+    text.innerText = name;
+    text.classList.add("commonStudentName");
+    text.classList.add("mb-0");
+    text.classList.add("text-black");
+    commonStudent.appendChild(text);
+
+    document.getElementById(box).appendChild(commonStudent);
 }
 
 function tab(event, tabName) {
@@ -44,13 +77,14 @@ function tab(event, tabName) {
     event.currentTarget.className += " active";
 }
 
-//name goes in, returns a student is found returns .name = false if not
-async function getStudentDetails(nameInputJSON) {
-    let parsedData = JSON.parse(nameInputJSON);
+//name goes in, returns a student is found returns and .name = false if not
+async function getStudentDetails(InputJSON) {
+    let parsedData = JSON.parse(InputJSON);
     let command;
-    if (Object.keys(parsedData).length = 1) {
+    if (Object.keys(parsedData).length == 1) {
         command = '/checkExistingStudent';
     } else {
+        console.log("reached");
         command = '/callStudent';
     }
     let response = await fetch(command,
@@ -59,7 +93,7 @@ async function getStudentDetails(nameInputJSON) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: nameInputJSON
+            body: InputJSON
         });
 
     let responseData = await response.json();
