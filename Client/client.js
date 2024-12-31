@@ -19,6 +19,9 @@ async function setUpStudentPage(obj) {
     }
     document.getElementById('bio').innerHTML = ("You like " + obj.favSweet + "!");
 
+    document.getElementById('scrollTitleFreshers').innerHTML = ("Students of 2025");
+    listOfCommonStudents("stash", "freshersBox", obj);
+
     document.getElementById('scrollTitleMastery').innerHTML = ("Meet your " + obj.specialisation + " classmates of 2025");
     listOfCommonStudents("specialisation", "masteryBox", obj);
 
@@ -29,39 +32,36 @@ async function setUpStudentPage(obj) {
 
 //create a div for each common student
 function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentName) {
-    if (currentName == name) {
-        return;
+    let commonStudent = document.createElement('div');
+    commonStudent.classList.add("commonStudentBoxes");
+
+    let commonStudentSweet = document.createElement('span');
+    commonStudentSweet.classList.add("commonStudentBoxesSweet");
+    if (currentSweet == commonSweet) {
+        commonStudentSweet.innerText = "You both love " + commonSweet + "!";
     } else {
-        let commonStudent = document.createElement('div');
-        commonStudent.classList.add("commonStudentBoxes");
-
-        let commonStudentSweet = document.createElement('span');
-        commonStudentSweet.classList.add("commonStudentBoxesSweet");
-        if (currentSweet == commonSweet) {
-            commonStudentSweet.innerText = "You both love " + commonSweet + "!";
-        } else {
-            commonStudentSweet.innerText = "Loves " + commonSweet + "!";
-        }
-        commonStudent.appendChild(commonStudentSweet);
-
-        let img = document.createElement('img');
-        if (gender == "Male") {
-            img.src = "./assets/img/male.png";
-        } else {
-            img.src = "./assets/img/female.png";
-        }
-        img.classList.add("commonStudentGender")
-        commonStudent.appendChild(img);
-
-        let text = document.createElement('p');
-        text.innerText = name;
-        text.classList.add("commonStudentName");
-        text.classList.add("mb-0");
-        text.classList.add("text-white");
-        commonStudent.appendChild(text);
-
-        document.getElementById(box).appendChild(commonStudent);
+        commonStudentSweet.innerText = "Loves " + commonSweet + "!";
     }
+    commonStudent.appendChild(commonStudentSweet);
+
+    let img = document.createElement('img');
+    if (gender == "Male") {
+        img.src = "./assets/img/male.png";
+    } else {
+        img.src = "./assets/img/female.png";
+    }
+    img.classList.add("commonStudentGender")
+    commonStudent.appendChild(img);
+
+    let text = document.createElement('p');
+    text.innerText = name;
+    text.classList.add("commonStudentName");
+    text.classList.add("mb-0");
+    text.classList.add("text-white");
+    commonStudent.appendChild(text);
+
+    document.getElementById(box).appendChild(commonStudent);
+
 }
 
 function tab(event, tabName) {
@@ -86,7 +86,12 @@ async function listOfCommonStudents(attribute, whichBox, obj) {
     let checkCommonAttribute = JSON.stringify({ name: obj.name, [attribute]: obj[attribute] });
     let fullList = await getStudentDetails(checkCommonAttribute);
     for (let i = 0; i < Object.keys(fullList).length; ++i) {
-        commonStudentbox(whichBox, obj.favSweet, fullList[i].favSweet, fullList[i].name, fullList[i].gender, obj.name)
+
+        if ((obj.name == fullList[i].name) && (attribute != "stash")) {
+            continue;
+        } else {
+            commonStudentbox(whichBox, obj.favSweet, fullList[i].favSweet, fullList[i].name, fullList[i].gender, obj.name)
+        }
     }
 }
 

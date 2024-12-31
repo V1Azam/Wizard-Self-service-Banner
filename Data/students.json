@@ -4,7 +4,7 @@
         "gender": "Male",
         "favSweet": "Fizzing Whizbees",
         "specialisation": "Duelling Magic",
-        "stash": "invisibility cloak",
+        "stash": "robe",
         "house": "Gryffindor"
     },
     {
@@ -12,7 +12,7 @@
         "gender": "Female",
         "favSweet": "Chocolate Frogs",
         "specialisation": "Protective Magic",
-        "stash": "doe plushie",
+        "stash": "robe",
         "house": "Gryffindor"
     },
     {
@@ -28,7 +28,7 @@
         "gender": "Male",
         "favSweet": "Chocolate Frogs",
         "specialisation": "Protective Magic",
-        "stash": "dog toy",
+        "stash": "robe",
         "house": "Gryffindor"
     },
     {
@@ -36,7 +36,7 @@
         "gender": "Male",
         "favSweet": "Acid Pop",
         "specialisation": "Trailblazing Potions",
-        "stash": "cheese",
+        "stash": "robe",
         "house": "Gryffindor"
     },
     {
@@ -92,7 +92,7 @@
         "gender": "Male",
         "favSweet": "Acid Pop",
         "specialisation": "Trailblazing Potions",
-        "stash": "doe plushie",
+        "stash": "robe",
         "house": "Slytherin"
     },
     {
@@ -156,7 +156,7 @@
         "gender": "Male",
         "favSweet": "Acid Pop",
         "specialisation": "Dark Magic",
-        "stash": "snake?",
+        "stash": "robe",
         "house": "Slytherin"
     },
     {

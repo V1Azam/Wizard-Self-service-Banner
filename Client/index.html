@@ -124,12 +124,19 @@
                     <p class="mb-0 text-white-50" id="bio"></p>
                     <div id="wizardScroll">
                         <div class="tab">
+                            <button class="tablink" onclick="tab(event, 'allFreshers')">Freshers 2025</button>
                             <button class="tablink" onclick="tab(event, 'mastery')">Mastery</button>
                             <button class="tablink" onclick="tab(event, 'house')">House</button>
                             <button class="tablink" onclick="tab(event, 'map')">What's Next</button>
                         </div>
 
                         <!-- Tab content -->
+                        <div id="allFreshers" class="tabcontent">
+                            <h3 id="scrollTitleFreshers"></h3>
+                            <div class="scrollBox" id="freshersBox">
+                            </div>
+                        </div>
+
                         <div id="mastery" class="tabcontent">
                             <h3 id="scrollTitleMastery"></h3>
                             <div class="scrollBox" id="masteryBox">
