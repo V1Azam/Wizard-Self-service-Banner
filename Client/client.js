@@ -1,13 +1,15 @@
 const nameInput = document.getElementById("login");
 
+//auto inserts commande to syle an id for display
 function visual(elem, act) {
     document.getElementById(elem).style.display = act;
 }
 
+//setup of student page
 function setUpStudentPage(obj) {
     visual('studentNotFound', "none");
-    document.getElementById('loginStudent').style.display = "none";
-    document.getElementById('successfulLogin').style.display = "block";
+    visual('loginStudent', "none");
+    visual('successfulLogin', "block");
     document.getElementById('loggedInStudent').innerHTML = obj.name;
 
     if (obj.gender == "Male") {
@@ -18,6 +20,9 @@ function setUpStudentPage(obj) {
     document.getElementById('bio').innerHTML = ("You like " + obj.favSweet + "!");
 
     document.getElementById('scrollTitleMastery').innerHTML = (obj.specialisation + " students of 2025");
+
+
+
     document.getElementById('scrollTitleHouse').innerHTML = (obj.house + " students of 2025");
 }
 
@@ -35,15 +40,20 @@ function tab(event, tabName) {
         tablink[i].className = tablink[i].className.replace(" active", "");
     }
 
-    document.getElementById(tabName).style.display = "block";
+    visual(tabName, "block");
     event.currentTarget.className += " active";
 }
 
-nameInput.addEventListener("submit", async function (event) {
-    event.preventDefault();
-    let nameInputData = new FormData(nameInput)
-    let nameInputJSON = JSON.stringify(Object.fromEntries(nameInputData.entries()));
-    let response = await fetch('/checkExistingStudent',
+//name goes in, returns a student is found returns .name = false if not
+async function getStudentDetails(nameInputJSON) {
+    let parsedData = JSON.parse(nameInputJSON);
+    let command;
+    if (Object.keys(parsedData).length = 1) {
+        command = '/checkExistingStudent';
+    } else {
+        command = '/callStudent';
+    }
+    let response = await fetch(command,
         {
             method: 'Post',
             headers: {
@@ -51,7 +61,18 @@ nameInput.addEventListener("submit", async function (event) {
             },
             body: nameInputJSON
         });
+
     let responseData = await response.json();
+    return (responseData);
+}
+
+//event for logging in
+nameInput.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    let nameInputData = new FormData(nameInput)
+    let nameInputJSON = JSON.stringify(Object.fromEntries(nameInputData.entries()));
+
+    let responseData = await getStudentDetails(nameInputJSON);
     if (responseData.name) {
         setUpStudentPage(responseData);
     } else {
@@ -59,14 +80,15 @@ nameInput.addEventListener("submit", async function (event) {
     }
 });
 
+//event for pressing register
 document.getElementById("registerLink").onclick = function (event) {
     event.preventDefault();
-    document.getElementById('registerNewStudent').style.display = "block";
-    document.getElementById('login').style.display = "none"
+    visual('registerNewStudent', "block");
+    visual('login', "none");
     visual('studentNotFound', "none");
 }
 
-// Set default tab to London on page load
+// Set default tab to first tab on page load
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".tablink").click();
 });

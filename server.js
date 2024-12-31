@@ -24,6 +24,18 @@ app.post('/checkExistingStudent', function (req, resp) {
     resp.json(result);
 });
 
+app.post('/callStudent', function (req, resp) {
+    let group = [];
+    let attribute = Object.values(req.body)[1];
+    for (let i = 0; i < students.length; ++i) {
+        let currentStudent = students[i];
+        if (currentStudent.attribute == attribute) {
+            group.push(currentStudent);
+        }
+    }
+    resp.json(group);
+});
+
 
 app.use(express.static('Client'));
 
