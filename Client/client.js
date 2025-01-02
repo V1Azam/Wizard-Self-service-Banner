@@ -1,17 +1,19 @@
 const nameInput = document.getElementById("login");
 
-//auto inserts commande to syle an id for display
+//auto inserts command to syle an id for display
 function visual(elem, act) {
     document.getElementById(elem).style.display = act;
 }
 
 //setup of student page
 async function setUpStudentPage(obj) {
+    //shows logged in students page while hiding log in and register
     visual('studentNotFound', "none");
     visual('loginStudent', "none");
     visual('successfulLogin', "block");
-    document.getElementById('loggedInStudent').innerHTML = obj.name;
 
+    //adds profile image, name and bio(favorite sweet)
+    document.getElementById('loggedInStudent').innerHTML = obj.name;
     if (obj.gender == "Male") {
         document.getElementById('genderPic').src = "./assets/img/male.png";
     } else {
@@ -19,12 +21,15 @@ async function setUpStudentPage(obj) {
     }
     document.getElementById('bio').innerHTML = ("You like " + obj.favSweet + "!");
 
+    //initialisation of fresher tab
     document.getElementById('scrollTitleFreshers').innerHTML = ("Students of 2025");
     listOfCommonStudents("stash", "freshersBox", obj);
 
+    //initialisation of mastery tab
     document.getElementById('scrollTitleMastery').innerHTML = ("Meet your " + obj.specialisation + " classmates of 2025");
     listOfCommonStudents("specialisation", "masteryBox", obj);
 
+    //initialisation of house tab
     document.getElementById('scrollTitleHouse').innerHTML = ("Meet your " + obj.house + " family of 2025");
     listOfCommonStudents("house", "houseBox", obj);
 }
@@ -34,6 +39,7 @@ function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentH
     let commonStudent = document.createElement('div');
     commonStudent.classList.add("commonStudentBoxes");
 
+    //shows fav sweet of hovered student and compares with current student
     let commonStudentSweet = document.createElement('span');
     commonStudentSweet.classList.add("commonStudentBoxesSweet");
     if (currentSweet == commonSweet) {
@@ -43,6 +49,7 @@ function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentH
     }
     commonStudent.appendChild(commonStudentSweet);
 
+    //adds gender pfp for each student
     let img = document.createElement('img');
     if (gender == "Male") {
         img.src = "./assets/img/male.png";
@@ -52,11 +59,13 @@ function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentH
     img.classList.add("commonStudentGender")
     commonStudent.appendChild(img);
 
+    //adds name of student
     let text = document.createElement('p');
     text.innerText = name;
     text.classList.add("commonStudentName");
     text.classList.add("mb-0");
 
+    //personalizes house tab with house colours
     if (box == "houseBox") {
         let houseInfo = personaliseHouse(currentHouse);
         commonStudent.style.outline = "10px solid" + houseInfo.colourPalette[0];
@@ -76,6 +85,7 @@ function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentH
 
     commonStudent.appendChild(text);
 
+    //adds the common student div to tab
     document.getElementById(box).appendChild(commonStudent);
 
 }
@@ -133,10 +143,18 @@ async function listOfCommonStudents(attribute, whichBox, obj) {
     let fullList = await getStudentDetails(checkCommonAttribute);
     for (let i = 0; i < Object.keys(fullList).length; ++i) {
 
+        //in every scenario except the full freshers list, ignores the current student
         if ((obj.name == fullList[i].name) && (attribute != "stash")) {
             continue;
         } else {
-            commonStudentbox(whichBox, obj.favSweet, fullList[i].favSweet, fullList[i].name, fullList[i].gender, obj.house)
+
+            //ensure current student is not compared to themselves in the freshers tab for favorite sweet 
+            if (obj.name == fullList[i].name) {
+                commonStudentbox(whichBox, '', fullList[i].favSweet, fullList[i].name, fullList[i].gender, obj.house)
+            }
+            else {
+                commonStudentbox(whichBox, obj.favSweet, fullList[i].favSweet, fullList[i].name, fullList[i].gender, obj.house)
+            }
         }
     }
 }
