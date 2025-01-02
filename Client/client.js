@@ -25,13 +25,12 @@ async function setUpStudentPage(obj) {
     document.getElementById('scrollTitleMastery').innerHTML = ("Meet your " + obj.specialisation + " classmates of 2025");
     listOfCommonStudents("specialisation", "masteryBox", obj);
 
-
     document.getElementById('scrollTitleHouse').innerHTML = ("Meet your " + obj.house + " family of 2025");
     listOfCommonStudents("house", "houseBox", obj);
 }
 
 //create a div for each common student
-function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentName) {
+function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentHouse) {
     let commonStudent = document.createElement('div');
     commonStudent.classList.add("commonStudentBoxes");
 
@@ -57,7 +56,24 @@ function commonStudentbox(box, currentSweet, commonSweet, name, gender, currentN
     text.innerText = name;
     text.classList.add("commonStudentName");
     text.classList.add("mb-0");
-    text.classList.add("text-white");
+
+    if (box == "houseBox") {
+        let houseInfo = personaliseHouse(currentHouse);
+        commonStudent.style.outline = "10px solid" + houseInfo.colourPalette[0];
+        commonStudent.style.backgroundColor = houseInfo.colourPalette[1];
+
+        document.getElementById('houseBox').style.backgroundColor = houseInfo.colourPalette[3];
+
+        //special font colour for huffelpuff to be more visible
+        if (houseInfo.colourPalette[2]) {
+            text.classList.add("text-black");
+        } else (
+            text.classList.add("text-white")
+        );
+    } else {
+        text.classList.add("text-white");
+    }
+
     commonStudent.appendChild(text);
 
     document.getElementById(box).appendChild(commonStudent);
@@ -82,6 +98,36 @@ function tab(event, tabName) {
     event.currentTarget.className += " active";
 }
 
+function personaliseHouse(house) {
+    let housePackage = {};
+    let outline, inner, text, scrollBoxColour;
+    if (house == 'Gryffindor' || house == 'Hufflepuff') {
+        if (house == 'Gryffindor') {
+            outline = '#BB8E47';
+            inner = '#A72227';
+            scrollBoxColour = '#8f2428';
+        } else {
+            outline = '#050000';
+            inner = '#FEC305';
+            text = '#050000';
+            scrollBoxColour = '#e2b522';
+        }
+    } else {
+        outline = '#FFFFFF';
+        if (house == 'Slytherin') {
+            inner = '#365D3E';
+            scrollBoxColour = '#2c4731';
+        } else {
+            inner = '#22285C';
+            scrollBoxColour = '#373b67';
+        }
+    }
+    housePackage.banner = ("./Client/assets/img/houseImgs/" + house);
+    housePackage.colourPalette = [outline, inner, text, scrollBoxColour];
+    return (housePackage);
+}
+
+//Gets a list of students who share the same attribute given from the current student and creates each student box within the tab content div
 async function listOfCommonStudents(attribute, whichBox, obj) {
     let checkCommonAttribute = JSON.stringify({ name: obj.name, [attribute]: obj[attribute] });
     let fullList = await getStudentDetails(checkCommonAttribute);
@@ -90,7 +136,7 @@ async function listOfCommonStudents(attribute, whichBox, obj) {
         if ((obj.name == fullList[i].name) && (attribute != "stash")) {
             continue;
         } else {
-            commonStudentbox(whichBox, obj.favSweet, fullList[i].favSweet, fullList[i].name, fullList[i].gender, obj.name)
+            commonStudentbox(whichBox, obj.favSweet, fullList[i].favSweet, fullList[i].name, fullList[i].gender, obj.house)
         }
     }
 }
@@ -139,6 +185,7 @@ document.getElementById("registerLink").onclick = function (event) {
     visual('studentNotFound', "none");
 };
 
+//event for pressing logout
 document.getElementById("loginLink").onclick = function (event) {
     event.preventDefault();
     document.getElementById("login").reset();
@@ -149,7 +196,7 @@ document.getElementById("loginLink").onclick = function (event) {
     document.querySelector(".tablink").click();
 };
 
-// Set default tab to first tab on page load
+//Set default tab to first tab on page load
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".tablink").click();
 });
