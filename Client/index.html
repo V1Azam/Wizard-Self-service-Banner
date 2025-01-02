@@ -69,19 +69,19 @@
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center" id="registerNewStudent">
                 <div class="col-lg-8 mx-auto">
-                    <form>
+                    <form id="register" method="post">
                         <div class="form-group">
                             <label for="studentName">Full Name</label>
                             <input type="text" class="form-control" id="studentName" placeholder="Enter Your Name Here"
                                 name="name" required>
-                            <label for="Gender">Gender</label>
+                            <label for="studentGender">Gender</label>
                             <select class="form-control" id="studentGender" name="gender" required>
                                 <option value="" selected disabled>Choose here</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                             </select>
-                            <label for="specialisation">Specialisation Mastery</label>
-                            <select class="form-control" id="studentMastery" name="mastery" required>
+                            <label for="studentMastery">Specialisation Mastery</label>
+                            <select class="form-control" id="studentMastery" name="specialisation" required>
                                 <option value="" selected disabled>Choose here</option>
                                 <option value="Duelling Magic">Duelling Magic</option>
                                 <option value="Protective Magic">Protective Magic</option>
@@ -89,16 +89,18 @@
                             </select>
                             <fieldset>
                                 <legend>What's your favorite sweet?</legend>
-                                <input class="form-check-input" type="radio" name="sweetChoice" id="chocolateFrogs"
-                                    required>
+                                <input class="form-check-input" type="radio" value="Chocolate Frogs" name="favSweet"
+                                    id="chocolateFrogs" required>
                                 <label class="form-check-label" for="chocolateFrogs">
                                     Chocolate Frogs
                                 </label>
-                                <input class="form-check-input" type="radio" name="sweetChoice" id="fizzingWhizbees">
+                                <input class="form-check-input" type="radio" value="Fizzing Whizbees" name="favSweet"
+                                    id="fizzingWhizbees">
                                 <label class="form-check-label" for="fizzingWhizbees">
                                     Fizzing Whizbees
                                 </label>
-                                <input class="form-check-input" type="radio" name="sweetChoice" id="acidPop">
+                                <input class="form-check-input" type="radio" value="Acid Pop" name="favSweet"
+                                    id="acidPop">
                                 <label class="form-check-label" for="acidPop">
                                     Acid Pop
                                 </label>
@@ -111,11 +113,14 @@
                             <input class="btn btn-primary" type="submit" value="Register" />
                         </div>
                     </form>
+                    <p class="mb-0 text-white-50" id="studentAlrExists">Student already exists. <a id="loginLink"
+                            href="#login">Login</a>
+                        instead?</p>
                 </div>
             </div>
             <div class="row gx-4 gx-lg-5  justify-content-center" id="successfulLogin">
                 <div class="col-lg-4 ms-auto">
-                    <a id="loginLink" href="#login"><i class="fa-solid fa-arrow-left"></i>Log Out</a>
+                    <a id="logoutLink" href="#login"><i class="fa-solid fa-arrow-left"></i>Log Out</a>
                 </div>
                 <div class="col-lg-10 mx-auto">
                     <h2 class="text-white mb-4">Welcome</h2>

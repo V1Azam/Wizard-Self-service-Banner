@@ -109,6 +109,10 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+#loginStudent {
+  display: block;
+}
+
 #registerNewStudent {
   display: none;
 }
@@ -119,6 +123,10 @@ body {
 
 
 #studentNotFound {
+  display: none;
+}
+
+#studentAlrExists {
   display: none;
 }
 

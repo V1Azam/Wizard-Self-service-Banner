@@ -1,8 +1,11 @@
-const nameInput = document.getElementById("login");
+//Set default tab to first tab on page load
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".tablink").click();
+});
 
 //auto inserts command to syle an id for display
 function visual(elem, act) {
-    document.getElementById(elem).style.display = act;
+    document.getElementById(elem).style.setProperty("display", act, "important");
 }
 
 //setup of student page
@@ -159,13 +162,18 @@ async function listOfCommonStudents(attribute, whichBox, obj) {
     }
 }
 
-//name goes in, returns a student is found returns and .name = false if not
+//filters which request is asked through how many properties were given 
 async function getStudentDetails(InputJSON) {
     let parsedData = JSON.parse(InputJSON);
     let command;
+
+    //checks if student exists in JSON file returning that students details
     if (Object.keys(parsedData).length == 1) {
         command = '/checkExistingStudent';
-    } else {
+    }
+
+    //returns a list of students with the common attribute value
+    else {
         command = '/callStudent';
     }
     let response = await fetch(command,
@@ -182,12 +190,13 @@ async function getStudentDetails(InputJSON) {
 }
 
 //event for logging in
-nameInput.addEventListener("submit", async function (event) {
+const nameInputLogin = document.getElementById("login");
+nameInputLogin.addEventListener("submit", async function (event) {
     event.preventDefault();
-    let nameInputData = new FormData(nameInput)
-    let nameInputJSON = JSON.stringify(Object.fromEntries(nameInputData.entries()));
+    let nameInputLoginData = new FormData(nameInputLogin)
+    let nameInputLoginJSON = JSON.stringify(Object.fromEntries(nameInputLoginData.entries()));
 
-    let responseData = await getStudentDetails(nameInputJSON);
+    let responseData = await getStudentDetails(nameInputLoginJSON);
     if (responseData.name) {
         setUpStudentPage(responseData);
     } else {
@@ -203,18 +212,41 @@ document.getElementById("registerLink").onclick = function (event) {
     visual('studentNotFound', "none");
 };
 
-//event for pressing logout
-document.getElementById("loginLink").onclick = function (event) {
+//event for registering
+const nameInputRegister = document.getElementById("register");
+nameInputRegister.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    let nameInputRegisterData = new FormData(nameInputRegister);
+    let nameInputRegisterJSON = JSON.stringify(Object.fromEntries(nameInputRegisterData.entries()));
+
+    let nameData = JSON.parse(nameInputRegisterJSON).name;
+    let nameDataJSON = JSON.stringify({ "name": nameData });
+    let response = await fetch('/checkExistingStudent',
+        {
+            method: 'Post',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: nameDataJSON
+        });
+
+    let responseData = await response.json();
+
+    if (responseData.name) {
+        visual('studentAlrExists', "block");
+    } else {
+        console.log(responseData);
+    }
+});
+
+//event for pressing logout after successful login OR login instead after attempt to register existing student
+document.getElementById("logoutLink").onclick = document.getElementById("loginLink").onclick = function (event) {
     event.preventDefault();
     document.getElementById("login").reset();
     visual('loginStudent', "block");
+    visual('login', "block");
+    visual('registerNewStudent', "none");
     visual('successfulLogin', "none");
     document.getElementById("masteryBox").innerHTML = "";
     document.getElementById("houseBox").innerHTML = "";
-    document.querySelector(".tablink").click();
 };
-
-//Set default tab to first tab on page load
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".tablink").click();
-});
