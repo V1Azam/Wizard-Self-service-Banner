@@ -1,14 +1,14 @@
 [
     {
-        "name": "Gryffindor"
+        "house": "Gryffindor"
     },
     {
-        "name": "Slytherin"
+        "house": "Slytherin"
     },
     {
-        "name": "Hufflepuff"
+        "house": "Hufflepuff"
     },
     {
-        "name": "Ravenclaw"
+        "house": "Ravenclaw"
     }
 ]

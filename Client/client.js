@@ -8,11 +8,28 @@ function visual(elem, act) {
     document.getElementById(elem).style.setProperty("display", act, "important");
 }
 
+//fulfills and returns a student with all their properties 
+async function newStudent(formData) {
+    let fullStudentDetails = formData;
+    fullStudentDetails.stash = "robe";
+    let randomHouse = await loadHouse();
+    fullStudentDetails.house = randomHouse.house
+    return (fullStudentDetails);
+}
+
+//randomly returns a house
+async function loadHouse(event) {
+    let currentHouse = await fetch('/randomHouse');
+    let newHouse = await currentHouse.json();
+    return (newHouse);
+}
+
 //setup of student page
 async function setUpStudentPage(obj) {
     //shows logged in students page while hiding log in and register
     visual('studentNotFound', "none");
     visual('loginStudent', "none");
+    visual('registerNewStudent', "none");
     visual('successfulLogin', "block");
 
     //adds profile image, name and bio(favorite sweet)
@@ -219,8 +236,8 @@ nameInputRegister.addEventListener("submit", async function (event) {
     let nameInputRegisterData = new FormData(nameInputRegister);
     let nameInputRegisterJSON = JSON.stringify(Object.fromEntries(nameInputRegisterData.entries()));
 
-    let nameData = JSON.parse(nameInputRegisterJSON).name;
-    let nameDataJSON = JSON.stringify({ "name": nameData });
+    let formData = JSON.parse(nameInputRegisterJSON);
+    let nameDataJSON = JSON.stringify({ "name": formData.name });
     let response = await fetch('/checkExistingStudent',
         {
             method: 'Post',
@@ -235,7 +252,21 @@ nameInputRegister.addEventListener("submit", async function (event) {
     if (responseData.name) {
         visual('studentAlrExists', "block");
     } else {
-        console.log(responseData);
+        let newStudentData = await newStudent(formData);
+        let newStudentDataJSON = JSON.stringify({
+            "name": newStudentData.name, "gender": newStudentData.gender,
+            "favSweet": newStudentData.favSweet, "specialisation": newStudentData.specialisation,
+            "stash": newStudentData.stash, "house": newStudentData.house
+        });
+        fetch('/addStudent',
+            {
+                method: 'Post',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: newStudentDataJSON
+            });
+        setUpStudentPage(newStudentData);
     }
 });
 
@@ -243,10 +274,12 @@ nameInputRegister.addEventListener("submit", async function (event) {
 document.getElementById("logoutLink").onclick = document.getElementById("loginLink").onclick = function (event) {
     event.preventDefault();
     document.getElementById("login").reset();
+    document.getElementById("register").reset();
     visual('loginStudent', "block");
     visual('login', "block");
     visual('registerNewStudent', "none");
     visual('successfulLogin', "none");
+    visual('studentAlrExists', "none");
     document.getElementById("masteryBox").innerHTML = "";
     document.getElementById("houseBox").innerHTML = "";
 };

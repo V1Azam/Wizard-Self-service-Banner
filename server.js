@@ -40,6 +40,12 @@ app.post('/callStudent', function (req, resp) {
     resp.json(group);
 });
 
+app.post('/addStudent', function (req, resp) {
+    let newStudent = req.body
+    students.push(newStudent);
+    resp.status(200)
+});
+
 
 app.use(express.static('Client'));
 
